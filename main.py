@@ -2,9 +2,9 @@ from interpolation import Interpolation
 
 def main():
 
-    print ("----------------------Newton Backward Interpolation-------------------------\n\n\n")
+    print ("\n----------------------Newton Backward Interpolation-------------------------\n\n")
 
-    x_values = input('Give x-values separated by space like 10 20 30 ...\t')
+    x_values = input('Give evenly separated x-values like 10 20 30 ...\t')
     x_values = x_values.split()
 
     for k in range(0, len(x_values)):
@@ -12,7 +12,15 @@ def main():
             x_values[k] = float(x_values[k])
         except ValueError:
             print("Sorry you give string")
-            run()
+            main()
+    
+    x_values.sort()
+
+    h = x_values[1] - x_values[0]
+    for i in range(1, len(x_values)-1):
+        if x_values[i+1] - x_values[i] != h:
+            print("Data points are not separated evenly. Please recheck and try again!!!")
+            main()
     
     print("-----------------------------------------------------------------------------\n\n\n")
 
@@ -32,7 +40,7 @@ def main():
     error = False
     while not error: 
         try:    
-            x = float(input('Give the value of x that you want to find: \t'))
+            x = float(input('Give Xs that you want to find: \t'))
             error = True
         except ValueError:
             print("Sorry you give string")
