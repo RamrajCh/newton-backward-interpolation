@@ -9,16 +9,16 @@ def main():
 
     for k in range(0, len(x_values)):
         try:
-            x_values[k] = float(x_values[k])
+            x_values[k] = round(float(x_values[k]),8)
         except ValueError:
             print("Sorry you give string")
             main()
     
     x_values.sort()
 
-    h = x_values[1] - x_values[0]
+    h = round(float(x_values[1] - x_values[0]),8)
     for i in range(1, len(x_values)-1):
-        if x_values[i+1] - x_values[i] != h:
+        if round(x_values[i+1] - x_values[i],8) != h:
             print("Data points are not separated evenly. Please recheck and try again!!!")
             main()
     
@@ -28,7 +28,7 @@ def main():
     l = 0
     while l < len(x_values):
         try:
-            y = float(input('Give value of y corresponding to %s\t'%x_values[l]))
+            y = round(float(input('Give value of y corresponding to %s\t'%x_values[l])),6)
             y_values.append(y)
             l += 1
         except ValueError:
@@ -45,6 +45,7 @@ def main():
         except ValueError:
             print("Sorry you give string")
             error = False
+        
 
     print("-----------------------------------------------------------------------------\n\n\n")
 
