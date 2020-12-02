@@ -1,5 +1,4 @@
 import numpy as np
-import sys
 import tabulate
 import math
 
@@ -30,7 +29,7 @@ def main():
     # Generating backward difference table
     for i in range(1,n):
         for j in range(n-1,i-2,-1):
-            y[j][i] = y[j][i-1] - y[j-1][i-1]
+            y[j][i] = round(y[j][i-1] - y[j-1][i-1],5)
 
             
     print('\nBACKWARD DIFFERENCE TABLE\n');
@@ -64,6 +63,7 @@ def main():
         #print(sum,array[-1][i+1],multi,math.factorial(i))
         sum += array[-1][i+1] * multi / math.factorial(i)
         
-    print(sum)
-main()
+    print("y="+str(round((sum), 4)))
 
+main()
+ 
