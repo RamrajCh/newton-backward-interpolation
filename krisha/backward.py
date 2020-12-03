@@ -6,8 +6,6 @@ def main():
     # Reading number of unknowns
     n = int(input('Enter number of data points: '))
 
-    # Making numpy array of n & n x n size and initializing 
-    # to zero for storing x and y value along with differences of y
     x = np.zeros((n))
     y = np.zeros((n,n))
 
@@ -19,20 +17,21 @@ def main():
         x[i] = (float(input( 'x['+str(i)+']=')))
         y[i][0] = float(input( 'y['+str(i)+']='))
 
-    h=round(x[1]-x[0],3)
+    h=round(x[1]-x[0],4)
     for i in range (0,n-1):
         #print(round(x[i+1]-x[i],3))
-        if round(x[i+1]-x[i],3) != h:
+        if round(x[i+1]-x[i],4) != h:
             print('interval for x is not same')
             main()
         
     # Generating backward difference table
     for i in range(1,n):
         for j in range(n-1,i-2,-1):
-            y[j][i] = round(y[j][i-1] - y[j-1][i-1],5)
+            y[j][i] = round(y[j][i-1] - y[j-1][i-1],4)
 
             
-    print('\nBACKWARD DIFFERENCE TABLE\n');
+    print('\n BACKWARD DIFFERENCE TABLE\n')
+
     array=list()
     for i in range(0,n):
         #print( x[i], end='')
